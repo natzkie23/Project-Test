@@ -16,6 +16,7 @@ type
     procedure CloseConnection;
     function OpenConnection : Boolean;
     function fetchClinic : TDataSet;
+    procedure MySQLStringSetting;
   private
     { Private declarations }
   public
@@ -30,6 +31,11 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDM.MySQLStringSetting;
+begin
+//
+end;
 
 function TDM.fetchClinic : TDataSet;
 begin
