@@ -1,0 +1,38 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 210
+  Width = 411
+  object UniConn: TUniConnection
+    ProviderName = 'MySQL'
+    Port = 3306
+    Username = 'root'
+    Server = 'localhost'
+    Left = 80
+    Top = 32
+  end
+  object MySQLUniProvider: TMySQLUniProvider
+    Left = 192
+    Top = 32
+  end
+  object populateClinic: TUniQuery
+    Connection = UniConn
+    SQL.Strings = (
+      
+        'SELECT CLINIC_TABLE.ID, CLINIC_TABLE.CLINIC_NAME, CLINIC_TABLE.C' +
+        'LINIC_CONTACT, CLINIC_TABLE.CLINIC_ADDRESS, CLINIC_TABLE.CLINIC_' +
+        'EMAIL'
+      'FROM CLINIC_TABLE')
+    Left = 80
+    Top = 112
+  end
+  object DataSetProvider1: TDataSetProvider
+    DataSet = populateClinic
+    Left = 192
+    Top = 112
+  end
+  object UniDataSource1: TUniDataSource
+    DataSet = populateClinic
+    Left = 296
+    Top = 56
+  end
+end

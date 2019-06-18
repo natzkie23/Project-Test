@@ -1,0 +1,14 @@
+﻿[btn_connect]
+Coordinates=10,71,84,58
+
+[]
+Coordinates=0,0,91,36
+Visible=True
+
+[StringGrid1]
+Coordinates=310,20,80,168
+Visible=True
+
+[DM.UDS]
+Coordinates=110,1,65,36
+

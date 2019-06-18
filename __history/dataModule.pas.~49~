@@ -1,0 +1,55 @@
+unit dataModule;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, DBAccess, Uni, UniProvider,
+  MySQLUniProvider, MemDS, Datasnap.Provider;
+
+type
+  TDM = class(TDataModule)
+    UniConn: TUniConnection;
+    MySQLUniProvider: TMySQLUniProvider;
+    populateClinic: TUniQuery;
+    DSP: TDataSetProvider;
+    UniDataSource1: TUniDataSource;
+    procedure CloseConnection;
+    function OpenConnection : Boolean;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+function TDM.OpenConnection():Boolean;
+    Begin
+  try
+    if UniConn.Connected = True then
+      Begin
+        Result := True;
+      End
+    Else
+      Begin
+
+      End;
+
+  except
+    result:=False;
+  end;
+    End;
+
+    procedure TDM.CloseConnection;
+    begin
+      populateClinic.Close;
+      UniConn.Close;
+    end;
+end.

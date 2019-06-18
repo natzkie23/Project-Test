@@ -1,0 +1,58 @@
+unit TRIALPROJ;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, Data.DB,
+  Vcl.DBGrids, dataModule, Data.Bind.EngExt, Vcl.Bind.DBEngExt, Vcl.Bind.Grid,
+  System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.Components,
+  Data.Bind.Grid, Data.Bind.DBScope;
+
+type
+  TMAIN = class(TForm)
+    btn_connect: TButton;
+    StringGrid1: TStringGrid;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    procedure btn_connectClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  MAIN: TMAIN;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TMAIN.btn_connectClick(Sender: TObject);
+ var
+    cid : Integer;
+    cname : string;
+begin
+      if DM.OpenConnection = True then
+      
+    try
+          DM.populateClinic.Open;
+          DM.populateClinic.First;
+        while not DM.populateClinic.Eof do
+        begin
+              cid := DM.populateClinic.FieldByName('ID').AsInteger;
+              cname := DM.populateClinic.FieldByName('CLINIC_NAME').AsString;
+
+              ShowMessage(IntToStr(cid)+' '+cname);
+
+              DM.populateClinic.Next;
+        end;
+           dM.populateClinic.Close;
+      except on E: Exception do
+      end;
+end;
+
+end.

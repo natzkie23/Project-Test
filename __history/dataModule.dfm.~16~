@@ -1,0 +1,36 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 210
+  Width = 411
+  object UniConn: TUniConnection
+    ProviderName = 'MySQL'
+    Port = 3306
+    Database = 'alenta102_dentalsmsystem'
+    Username = 'root'
+    Server = 'localhost'
+    Connected = True
+    Left = 80
+    Top = 32
+  end
+  object MySQLUniProvider: TMySQLUniProvider
+    Left = 192
+    Top = 32
+  end
+  object populateClinic: TUniQuery
+    Connection = UniConn
+    SQL.Strings = (
+      '')
+    Left = 80
+    Top = 112
+  end
+  object DataSetProvider1: TDataSetProvider
+    DataSet = populateClinic
+    Left = 192
+    Top = 112
+  end
+  object UniDataSource1: TUniDataSource
+    DataSet = populateClinic
+    Left = 288
+    Top = 32
+  end
+end
