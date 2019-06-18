@@ -30,7 +30,7 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
-
+//TRIAL AND ERROR
 function TDM.fetchClinic : TDataSet;
 begin
       try
